@@ -174,7 +174,8 @@
                     <a href="images/JKAzalekorCV.docx" download class="btn btn2">Download CV</a>
                 </div>
                 <div class="contact-right">
-                    <form onsubmit="sendEmail(); reset(); return false;">
+                    <form action="https://api.web3forms.com/submit" method="POST">
+                        <input type="hidden" name="access_key" value="9e35f5f5-9801-4ea6-8ef7-04c882207b9d">
                         <input type="text" id="name" name="name" placeholder="Your Name" required>
                         <input type="email" id="email" name="email" placeholder="Your Email" required>
                         <textarea name="message" id="message" rows="6" placeholder="Your Message"></textarea>
@@ -189,28 +190,25 @@
         </div>
     </div>
 
-    <script>
-        function sendEmail() {
-            Email.send({
-                    Host : "smtp.gmail.com",
-                    Username : "jayhovah123@gmail.com",
-                    Password : "",
-                    To : 'jkazalekor@gmail.com',
-                    From : document.getElementById("email").value,
-                    Subject : "New Contact Form Enquiry",
-                    Body : "Name: " + document.getElementById("name").value + 
-                    "<br> Email: " + document.getElementById("email").value +
-                    "<br> Subject: " + document.getElementById("message").value
-                }).then(response => {
-                    msg.innerHTML = "Message sent successfully!"
-                    setTimeout(function () {
-                        msg.innerHTML = ""
-                    }, 5000)
-                    form.reset()
-                }
-                );
-        }
-    </script>
+    <!-- <script>
+        (function() {
+    document.addEventListener('DOMContentLoaded', function() {
+        const contactForm = document.getElementById('contactForm');
+
+        contactForm.addEventListener('submit', function(event) {
+            // event.preventDefault(); // Prevent the default form submission
+
+            // Perform form validation or other actions before resetting
+
+            // Clear and reset the form
+            // contactForm.reset();
+        });
+    });
+})();
+
+id="contactForm"
+    </script> -->
+
 
     <script>
 
@@ -243,7 +241,7 @@
 
     </script>
 
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <!-- <script src="https://smtpjs.com/v3/smtp.js"></script> -->
 
     <!-- <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbx7bBkh3cojHsMsi6d4mxv3APG1LsM8RGCl2uyNUNvfjFMgrJiU4LbNLmtMjBYsKE5tiA/exec'
