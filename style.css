@@ -36,6 +36,12 @@ nav {
 
 .logo {
     width: 10%;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.logo:hover {
+    transform: scale(1.1);
 }
 
 nav ul li {

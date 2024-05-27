@@ -24,6 +24,7 @@
                     <li><a href="#services">Services</a></li>
                     <li><a href="#portfolio">Portfolio</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="https://jkazalekorblog.netlify.app/">Blog</a></li>
                     <i class="fa-solid fa-xmark" onclick="closemenu()"></i>
                 </ul>
                 <i class="fa-solid fa-bars" onclick="openmenu()"></i>
@@ -67,7 +68,8 @@
                         <ul>
                             <li><span>BA Economics & Mathematics</span><br>From the University of Ghana</li>
                             <li><span>Data Science Lab</span><br>World Quant University</li>
-                            <li><span>Data Science Program</span><br>ALX Africa</li>
+                            <li><span>Data Science Program</span><br>ALX Africa (in progress)</li>
+                            <li><span>Financial Engineering Masters</span><br>World Quant University (in progress)</li>
                         </ul>
                     </div>
                 </div>
@@ -119,7 +121,7 @@
                     <div class="layer">
                         <h4>ALX Group 232 work</h4>
                         <p>This is a project belonging to ALX group 232 of cohort 2. My group and I worked on the idea of creating an e-learning platform that assists students in less privileged areas of Ghana. Schools in lower categories such as Category C or D and also schools in less-resourced areas.</p>
-                        <a href="https://www.datascienceportfol.io/jkazalekor" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <a href="https://www.datascienceportfol.io/jkazalekor/projects/0" target="_blank"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
                     </div>
                 </div>
                 <div class="work">
@@ -139,7 +141,7 @@
                     </div>
                 </div>
             </div>
-            <a href="#" class="btn">See more</a>
+            <a href="https://www.datascienceportfol.io/jkazalekor" class="btn">See more</a>
         </div>
     </div>
 
@@ -172,10 +174,10 @@
                     <a href="images/JKAzalekorCV.docx" download class="btn btn2">Download CV</a>
                 </div>
                 <div class="contact-right">
-                    <form name="submit-to-google-sheet">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                        <input type="email" name="email" placeholder="Your Email" required>
-                        <textarea name="message" rows="6" placeholder="Your Message"></textarea>
+                    <form onsubmit="sendEmail(); reset(); return false;">
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                        <textarea name="message" id="message" rows="6" placeholder="Your Message"></textarea>
                         <button type="submit" class="btn btn2">Submit</button>
                     </form>
                     <span id="msg"></span>
@@ -186,6 +188,29 @@
             <p>Copyright &copy; <span>JK Azalekor</span>. Credit Easy Tutorials</p>
         </div>
     </div>
+
+    <script>
+        function sendEmail() {
+            Email.send({
+                    Host : "smtp.gmail.com",
+                    Username : "jayhovah123@gmail.com",
+                    Password : "",
+                    To : 'jkazalekor@gmail.com',
+                    From : document.getElementById("email").value,
+                    Subject : "New Contact Form Enquiry",
+                    Body : "Name: " + document.getElementById("name").value + 
+                    "<br> Email: " + document.getElementById("email").value +
+                    "<br> Subject: " + document.getElementById("message").value
+                }).then(response => {
+                    msg.innerHTML = "Message sent successfully!"
+                    setTimeout(function () {
+                        msg.innerHTML = ""
+                    }, 5000)
+                    form.reset()
+                }
+                );
+        }
+    </script>
 
     <script>
 
@@ -217,7 +242,10 @@
         }
 
     </script>
-    <script>
+
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <!-- <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbx7bBkh3cojHsMsi6d4mxv3APG1LsM8RGCl2uyNUNvfjFMgrJiU4LbNLmtMjBYsKE5tiA/exec'
         const form = document.forms['submit-to-google-sheet']
         const msg = document.getElementById("msg")
@@ -234,7 +262,9 @@
                 })
                 .catch(error => console.error('Error!', error.message))
         })
-    </script>
+    </script> 
+name="submit-to-google-sheet" 
+-->
 </body>
 
 </html>
